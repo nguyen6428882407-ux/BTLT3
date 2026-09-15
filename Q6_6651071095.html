@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VietAir - Đặt vé máy bay</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; background: #eaf3fb; color: #222; }
+  header { background: #0b3d91; color: #fff; padding: 14px 24px; }
+  header h1 { margin: 0; font-size: 22px; }
+  header h1 span { color: #fbbf24; }
+  main { display: flex; justify-content: center; padding: 24px 15px 40px; }
+  section {
+    background: #fff;
+    max-width: 620px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 24px 28px 28px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  }
+  h2 { text-align: center; color: #0b3d91; font-size: 19px; margin-top: 0; }
+  fieldset { border: 1px solid #cfe0f5; border-radius: 8px; margin-bottom: 18px; padding: 14px 16px 16px; }
+  legend { font-weight: 600; color: #0b3d91; padding: 0 6px; font-size: 13.5px; }
+  label { display: block; font-size: 12.5px; color: #555; margin: 10px 0 4px; }
+  input[type="text"], input[type="date"], input[type="number"], select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  input:focus, select:focus { outline: none; border-color: #0b3d91; box-shadow: 0 0 0 2px #cfe0f5; }
+  .result-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .result-box label { margin: 0; font-weight: 600; color: #166534; font-size: 13.5px; }
+  output { font-size: 18px; font-weight: 700; color: #15803d; }
+  .security-note { font-size: 12.5px; color: #666; line-height: 1.6; display: flex; gap: 8px; align-items: flex-start; }
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #f97316;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 6px;
+  }
+  button[type="submit"]:hover { background: #ea580c; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Viet<span>Air</span> ✈️</h1>
+</header>
+
+<main>
+  <section>
+    <h2>Đặt vé máy bay VietAir</h2>
+
+    <form action="xu_ly_ve.php" method="POST" id="formDatVe">
+
+      <fieldset>
+        <legend>1. Thông tin chuyến bay</legend>
+
+        <div class="two-col">
+          <div>
+            <label for="diem_di">Điểm đi:</label>
+            <input type="text" name="diem_di" id="diem_di" list="danhsach_thanh_pho" placeholder="Nhập điểm đi">
+          </div>
+          <div>
+            <label for="diem_den">Điểm đến:</label>
+            <input type="text" name="diem_den" id="diem_den" list="danhsach_thanh_pho" placeholder="Nhập điểm đến">
+          </div>
+        </div>
+
+        <datalist id="danhsach_thanh_pho">
+          <option value="Hà Nội – HAN">
+          <option value="TP. Hồ Chí Minh – SGN">
+          <option value="Đà Nẵng – DAD">
+          <option value="Nha Trang – CXR">
+          <option value="Phú Quốc – PQC">
+          <option value="Hải Phòng – HPH">
+          <option value="Cần Thơ – VCA">
+        </datalist>
+
+        <div class="two-col">
+          <div>
+            <label for="ngay_di">Ngày đi:</label>
+            <input type="date" name="ngay_di" id="ngay_di" required>
+          </div>
+          <div>
+            <label for="ngay_ve">Ngày về:</label>
+            <input type="date" name="ngay_ve" id="ngay_ve">
+          </div>
+        </div>
+
+        <label for="hang_ghe">Hạng ghế:</label>
+        <select name="hang_ghe" id="hang_ghe">
+          <optgroup label="Phổ thông">
+            <option value="eco_basic" data-gia="1200000">Phổ thông cơ bản – 1.200.000đ</option>
+            <option value="eco_flex" data-gia="1800000">Phổ thông linh hoạt – 1.800.000đ</option>
+          </optgroup>
+          <optgroup label="Thương gia">
+            <option value="biz" data-gia="4500000">Thương gia – 4.500.000đ</option>
+          </optgroup>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Thông tin hành khách</legend>
+
+        <div class="two-col">
+          <div>
+            <label for="nguoi_lon">Số hành khách người lớn:</label>
+            <input type="number" name="nguoi_lon" id="nguoi_lon" min="1" max="9" value="1">
+          </div>
+          <div>
+            <label for="tre_em">Số trẻ em:</label>
+            <input type="number" name="tre_em" id="tre_em" min="0" max="9" value="0">
+          </div>
+        </div>
+
+        <label for="ma_giam">Mã giảm giá:</label>
+        <input type="text" name="ma_giam" id="ma_giam" placeholder="Nhập mã nếu có" list="ma_uu_dai">
+        <datalist id="ma_uu_dai">
+          <option value="SUMMER20">
+          <option value="NEWMEMBER">
+          <option value="HOLIDAY50">
+        </datalist>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Kết quả</legend>
+        <div class="result-box">
+          <label for="tong_tien">Tổng tiền ước tính:</label>
+          <output name="tong_tien" id="tong_tien" for="hang_ghe nguoi_lon tre_em">0 VNĐ</output>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>4. Bảo mật giao dịch</legend>
+        <div class="security-note">
+          <span>🔒</span>
+          <span>
+            Hệ thống sẽ tạo một cặp khóa mã hóa để bảo vệ thông tin của bạn.
+            <br><em>(Keygen đã bị deprecated, không hoạt động trên trình duyệt hiện đại — chỉ minh họa cấu trúc.)</em>
+            <keygen name="security_key" keytype="rsa">
+          </span>
+        </div>
+      </fieldset>
+
+      <button type="submit">✈ Tìm chuyến bay</button>
+
+    </form>
+  </section>
+</main>
+
+<script>
+  // Tính tổng tiền ước tính dựa trên hạng ghế + số hành khách, hiển thị ra thẻ <output>
+  const hangGhe = document.getElementById('hang_ghe');
+  const nguoiLon = document.getElementById('nguoi_lon');
+  const treEm = document.getElementById('tre_em');
+  const tongTien = document.getElementById('tong_tien');
+
+  function tinhTongTien() {
+    const gia = Number(hangGhe.selectedOptions[0].dataset.gia || 0);
+    const soNguoiLon = Number(nguoiLon.value || 0);
+    const soTreEm = Number(treEm.value || 0);
+    // trẻ em tính 50% giá vé người lớn
+    const tong = gia * soNguoiLon + gia * 0.5 * soTreEm;
+    tongTien.textContent = tong.toLocaleString('vi-VN') + ' VNĐ';
+  }
+
+  [hangGhe, nguoiLon, treEm].forEach(el => el.addEventListener('input', tinhTongTien));
+  hangGhe.addEventListener('change', tinhTongTien);
+  tinhTongTien();
+</script>
+
+</body>
+</html>

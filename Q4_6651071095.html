@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MelodyVN Online</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; background: #1e1b2e; color: #eee; }
+  .wrap { max-width: 1000px; margin: 25px auto; background: #241f38; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  header { text-align: center; padding: 24px 20px 10px; }
+  header h1 { margin: 0; font-size: 24px; color: #a78bfa; }
+  header h2 { margin: 6px 0 0; font-size: 13px; font-weight: 400; color: #c4b5fd; }
+  main { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; padding: 20px; }
+  section { background: #2d2748; border-radius: 10px; padding: 16px 18px; margin-bottom: 18px; }
+  section h2 { margin-top: 0; font-size: 16px; color: #fbbf24; }
+  video { width: 100%; border-radius: 8px; background: #000; }
+  main p { font-size: 13px; color: #cbd5e1; line-height: 1.6; }
+  .track { margin-bottom: 14px; }
+  .track p.title { margin: 0 0 6px; font-weight: 600; font-size: 13.5px; color: #f1f5f9; }
+  audio { width: 100%; }
+  .loop-note { font-size: 12px; color: #94a3b8; font-style: italic; margin-top: 4px; }
+  aside { background: #746c9a; border-radius: 10px; padding: 16px 18px; height: fit-content; }
+  aside h3 { margin-top: 0; font-size: 15px; color: #fbbf24; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 8px; border-bottom: 1px solid #423a63; text-align: left; }
+  th { color: #a78bfa; }
+  footer { background: #17142b; text-align: center; padding: 14px; font-size: 12px; color: #94a3b8; }
+  footer address { font-style: normal; }
+  footer a { color: #a78bfa; text-decoration: none; }
+  @media (max-width: 700px) { main { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <hgroup>
+      <h1>MelodyVN Online</h1>
+      <h2>Học nhạc mọi lúc mọi nơi</h2>
+    </hgroup>
+  </header>
+
+  <main>
+    <div>
+      <section>
+        <h2>Bài học: Hợp âm cơ bản Guitar</h2>
+        <video width="640" height="360" controls poster="thumbnail.jpg" preload="metadata">
+          <source src="https://www.youtube.com/watch?v=DLeRalgVuas&pp=ygUaaOG7o3Agw6JtIGPGoSBi4bqjbiBndWl0YXI%3D.mp4" type="video/mp4">
+          <source src="https://www.youtube.com/watch?v=DLeRalgVuas&pp=ygUaaOG7o3Agw6JtIGPGoSBi4bqjbiBndWl0YXI%3D.webm" type="video/webm">
+          <p>Trình duyệt của bạn không hỗ trợ video.</p>
+        </video>
+        <p>Video hướng dẫn cách bấm các hợp âm guitar cơ bản, phù hợp cho người mới bắt đầu học đàn.</p>
+      </section>
+
+      <section>
+        <h2>Nghe thử giai điệu mẫu</h2>
+
+        <div class="track">
+          <p class="title">🎹 Canon in D – Piano</p>
+          <audio controls preload="none">
+            <source src="canon_piano.mp3" type="audio/mpeg">
+            <source src="canon_piano.ogg" type="audio/ogg">
+            <p>Trình duyệt không hỗ trợ audio.</p>
+          </audio>
+        </div>
+
+        <div class="track">
+          <p class="title">🎹 Fur Elise – Piano</p>
+          <audio controls autoplay loop>
+            <source src="fur_elise.mp3" type="audio/mpeg">
+            <source src="fur_elise.ogg" type="audio/ogg">
+            <p>Trình duyệt không hỗ trợ audio.</p>
+          </audio>
+          <p class="loop-note">Thuộc tính loop giúp bản nhạc tự động phát lại từ đầu khi kết thúc, phát liên tục không dừng.</p>
+        </div>
+      </section>
+    </div>
+
+    <aside>
+      <h3>Lịch học tuần này</h3>
+      <table>
+        <thead>
+          <tr><th>Ngày</th><th>Buổi học</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Thứ Hai</td><td>Guitar Cơ bản</td></tr>
+          <tr><td>Thứ Tư</td><td>Piano Nhập môn</td></tr>
+          <tr><td>Thứ Sáu</td><td>Hợp âm nâng cao</td></tr>
+        </tbody>
+      </table>
+    </aside>
+  </main>
+
+  <footer>
+    <address>
+      Trung tâm âm nhạc MelodyVN - 123 Đường Nhạc, Quận Âm -
+      Email: <a href="mailto:info@melodyvn.com">info@melodyvn.com</a> - Hotline: 1900 6789
+    </address>
+  </footer>
+</div>
+
+</body>
+</html>
